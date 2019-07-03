@@ -32,7 +32,7 @@ WORKDIR $CAFFE_ROOT
 ENV CLONE_TAG=ssd
 
 RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/weiliu89/caffe.git . && \
-    pip install --upgrade pip && \
+    python -m pip install --upgrade pip && \
     cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
     mkdir build && cd build && \
     cmake -DCPU_ONLY=1 .. && \
